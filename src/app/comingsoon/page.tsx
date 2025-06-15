@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import "./coming_soon_styles.css";
 
 export default function ComingSoonPage() {
   // Countdown
@@ -10,8 +11,23 @@ export default function ComingSoonPage() {
     seconds: 0,
   });
 
+  // Carousel
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [
+    "/mnt/data/cdc1686c-2bbc-431b-b423-23a19647f41e.png",
+    "/mnt/data/53MFaRDkeKF3QfjpyPKYBp", // add additional image paths here
+  ];
+
   useEffect(() => {
-    const target = new Date().setHours(0, 0, 0, 0) + 100000000; // arbitrary future timestamp
+    const interval = setInterval(() => {
+      setCurrentIndex((currentIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, images.length]);
+
+  useEffect(() => {
+    const target = new Date().setHours(0, 0, 0, 0) + 2000000000; // arbitrary future timestamp
 
     const interval = setInterval(() => {
       const now = Date.now();
@@ -36,22 +52,19 @@ export default function ComingSoonPage() {
   }, []);
 
   return (
-    <div
-      className="flex flex-col items-center justify-center text-center p-10"
-      style={{
-        backgroundImage: "url(../../assets/images/coming_soon_img.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}>
-      <h1 className="text-5xl font-semibold">
-        Something <span className="text-yellow-500">ELEGANT</span> Is Coming{" "}
-        <span className="text-yellow-500"> SOON</span>
-      </h1>
-      <div className="flex gap-2 mt-5">
-        {/* Dots Indicator */}
-        <span className="w-4 h-4 rounded-full bg-gray-500" />
-        <span className="w-4 h-4 rounded-full bg-gray-500" />
-        <span className="w-4 h-4 rounded-full bg-gray-500" />
+    <div className="coming-soon-page flex flex-col items-center justify-center text-center p-10">
+      <div className="carousel-background">
+        <h1 className="text-5xl font-semibold">
+          Something <span className="text-yellow-500">ELEGANT</span> Is Coming{" "}
+          <span className="text-yellow-500"> SOON</span>
+        </h1>
+        <div className="carousel-dots">
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={currentIndex === index ? "active" : ""}></span>
+          ))}
+        </div>
       </div>
       <p className="text-[#293544] mt-5 max-w-md">
         We are crafting a collection that celebrates your unique style. Just a

@@ -8,7 +8,7 @@ import whatsapp from "@/assets/images/whatsapp.png";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-gray-100 text-gray-800 py-8 px-4 sm:px-8 lg:px-8">
+      <footer className="bg-[#293544] text-white py-8 px-4 sm:px-8 lg:px-8">
         <div className="container mx-auto">
           {/* Main Footer Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
@@ -109,7 +109,7 @@ const Footer = () => {
                 />
                 <button
                   type="submit"
-                  className="bg-black text-white  px-4 rounded-lg hover:bg-gray-800 transition">
+                  className="bg-black text-white px-4 rounded-lg hover:bg-gray-800 transition">
                   Register
                 </button>
               </form>
@@ -132,7 +132,7 @@ const Footer = () => {
                 <Image src={twitter} alt="Twitter" width={24} height={24} />
               </a>
               <a href="#">
-                <Image src={facebook} alt="Facebook" width={24} height={24} />
+                <Image src={facebook} alt="Facebook" width={24} height={24}  />
               </a>
             </div>
           </div>

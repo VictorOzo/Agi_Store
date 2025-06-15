@@ -1,11 +1,15 @@
 import React from "react";
+import Image from "next/image";
+import Agi_store from "@/assets/images/Agi_logo.png";
 import { Menu, User, Heart, ShoppingCart } from "lucide-react";
 
 export default function Navbar() {
   return (
     <header>
       <div className="bg-[#293544] text-gray-100 p-4 flex items-center justify-between px-[4vh]">
-        <div className="text-2xl font-semibold">Logo</div>
+        <div className="text-2xl font-semibold">
+          <Image className="w-[70px] h-[70px]" src={Agi_store} alt="logo" />
+        </div>
         <div className="hidden md:flex items-center gap-4">
           <input
             type="text"
