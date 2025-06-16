@@ -1,1 +1,6 @@
-
+.coming-soon-container{
+    background-image: url('../../assets/images/coming_soon_Img.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}

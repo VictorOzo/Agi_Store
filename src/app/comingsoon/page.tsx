@@ -1,6 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./coming_soon_styles.css";
+import {Playfair_Display} from "next/font/google";
+
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function ComingSoonPage() {
   // Countdown
@@ -10,21 +17,6 @@ export default function ComingSoonPage() {
     minutes: 0,
     seconds: 0,
   });
-
-  // Carousel
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [
-    "/mnt/data/cdc1686c-2bbc-431b-b423-23a19647f41e.png",
-    "/mnt/data/53MFaRDkeKF3QfjpyPKYBp", // add additional image paths here
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((currentIndex + 1) % images.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex, images.length]);
 
   useEffect(() => {
     const target = new Date().setHours(0, 0, 0, 0) + 2000000000; // arbitrary future timestamp
@@ -52,32 +44,28 @@ export default function ComingSoonPage() {
   }, []);
 
   return (
-    <div className="coming-soon-page flex flex-col items-center justify-center text-center p-10">
-      <div className="carousel-background">
-        <h1 className="text-5xl font-semibold">
-          Something <span className="text-yellow-500">ELEGANT</span> Is Coming{" "}
-          <span className="text-yellow-500"> SOON</span>
+    <div className={`${playfair.className} coming-soon-page flex flex-col items-center justify-center text-center p-10 coming-soon-container`}>
+      <div>
+        <h1 className="text-5xl font-semibold ">
+          Something <span className="text-yellow-500 italic ">ELEGANT</span> Is
+          Coming
+          <span className="text-yellow-500 italic"> SOON</span>
         </h1>
-        <div className="carousel-dots">
-          {images.map((_, index) => (
-            <span
-              key={index}
-              className={currentIndex === index ? "active" : ""}></span>
-          ))}
-        </div>
       </div>
-      <p className="text-[#293544] mt-5 max-w-md">
+      <p className="text-[black] text-[18px] mt-5 max-w-md font-semibold">
         We are crafting a collection that celebrates your unique style. Just a
         few minutes to go. At AgibyAgi, we are here to serve our customers with
         different collections and categories to shop from
       </p>
-      <div className="text-4xl font-semibold mt-5">
+      <div className="text-4xl font-semibold mt-5 font-sans">
         {timeLeft.days}d : {timeLeft.hours}h : {timeLeft.minutes}m :{" "}
         {timeLeft.seconds}s
       </div>
       {/* Newsletter Signup */}
       <div className="newsletter">
-        <h2 className="text-[#293544]">Be the first to shop our collection</h2>
+        <h2 className="text-[black] text-3xl font-extrabold">
+          Be the first to shop our collection !
+        </h2>
         <input
           type="email"
           placeholder="Enter your email address"
