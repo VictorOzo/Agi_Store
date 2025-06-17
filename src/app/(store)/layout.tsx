@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/globals.css";
 import Navbar from "@/component/navbar/Navbar";
 import Footer from "@/component/footer/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
